@@ -92,15 +92,16 @@ export default App;
 
 
 function Lists(){
-    return(
-        <div>
-            {data.map((extension)=>(
-                <ExtensionLists extensionObj={extension} key={extension.name}
-                   use={extension.use}
-                />
-            ))}
-        </div>
-    )
+    return (
+      <div>
+        {data.map((extension) => (
+            <div key={extension.name}>
+          <ExtensionLists extensionObj={extension} name={extension.name} use={extension.use} />
+          <GetStatus status={extension.status}/>
+          </div>
+       ))}
+      </div>
+    );
 }
 
 function ExtensionLists(props){
@@ -110,8 +111,16 @@ function ExtensionLists(props){
       <h1>{props.extensionObj.name}</h1>
       <p>{props.extensionObj.use}</p>
       
-      
     </li>
     </div>
   )
+}
+function GetStatus(props){
+    return(
+        <div>
+        {
+          props.status == "active" && <p> This Extension is {props.status}</p>
+        }
+        </div>
+    )
 }
