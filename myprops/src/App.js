@@ -92,16 +92,23 @@ export default App;
 
 
 function Lists(){
+  const extensionsData = data
+  const numExtensions = extensionsData.length
     return (
       <div>
-        {data.map((extension) => (
-            <div key={extension.name}>
-          <ExtensionLists extensionObj={extension} name={extension.name} use={extension.use} />
-          <GetStatus status={extension.status}/>
+        {numExtensions > 0 && (
+          <div>
+            {extensionsData.map((extension) => (
+               <div key={extension.name}>
+              <ExtensionLists extensionObj={extension} />
+                <GetStatus extensionObj={extension} />
+                </div>
+            ))}
           </div>
-       ))}
+        )}
       </div>
     );
+
 }
 
 function ExtensionLists(props){
@@ -119,7 +126,7 @@ function GetStatus(props){
     return(
         <div>
         {
-          props.status == "active" || <p> This Extension is {props.status}</p>
+          props.status == "active" || <p> This Extension is {props.extensionObj.status}</p>
         }
         </div>
     )
