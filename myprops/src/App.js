@@ -95,7 +95,7 @@ function Lists(){
     return(
         <div>
             {data.map((extension)=>(
-                <ExtensionLists name={extension.name}
+                <ExtensionLists extensionObj={extension} key={extension.name}
                    use={extension.use}
                 />
             ))}
@@ -107,8 +107,10 @@ function ExtensionLists(props){
   return(
     <div>
     <li>
-      <h1>{props.name}</h1>
-      <p>{props.use}</p>
+      <h1>{props.extensionObj.name}</h1>
+      <p>{props.extensionObj.use}</p>
+      
+      
     </li>
     </div>
   )
