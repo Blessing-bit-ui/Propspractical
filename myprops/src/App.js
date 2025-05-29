@@ -119,7 +119,7 @@ function GetStatus(props){
     return(
         <div>
         {
-          props.status == "active" && <p> This Extension is {props.status}</p>
+          props.status == "active" || <p> This Extension is {props.status}</p>
         }
         </div>
     )
